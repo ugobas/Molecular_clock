@@ -7,7 +7,8 @@ Email: <ubastolla@cbm.csic.es>
 
 It includes the needlemanwunsch aligner developed by Dr. Andrew C. R. Martin in the Profit suite of programs, (c) SciTech Software 1993-2007
 
-Given a multiple sequence alignment (MSA) of proteins with known structures, for all aligned pairs it computes and prints sequence and structure similarity measures:
+Given a multiple sequence alignment (MSA) of proteins with known structures, for all aligned pairs it computes and prints sequence and structure similarity measures (.sim), divergence measures (.div) and violations of the molecular clock computed across all possible outgroups (.cv).
+
 
 (1) Sequence identity SI,
 
