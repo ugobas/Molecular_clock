@@ -9,29 +9,32 @@ It includes the needlemanwunsch aligner developed by Dr. Andrew C. R. Martin in 
 
 Given a multiple sequence alignment (MSA) of proteins with known structures, for all aligned pairs it computes and prints sequence and structure similarity measures (.sim), divergence measures (.div) and violations of the molecular clock computed across all possible outgroups (.cv).
 
-
+Similarity measures:
+--------------------
 (1) Sequence identity SI,
 
 (2) Contact overlap q,
 
 (3) TM-score TM (Zhang & Skolnick Proteins 2004 57:702)
 
-and the corresponding divergence measures:
-
+Divergence measures:
+---------------------
 (1) Tajima-Nei divergence TN=-log((SI-S0)/(1-S0)) with S0=0.06 (Tajima F & Nei 1984, Mol Biol Evol 1:269),
 
 (2) Contact_divergence CD=-log((q-q0(L))/(1-q0(L)) (Pascual-Garcia et al Proteins 2010 78:181-96),
 
 (3) TM_divergence=-log(TM).
 
-For all pairs and all divergence measures, it computes violations of the molecular clock 
+Test of molecular clock
+-----------------------
+For all pairs a,b and all divergence measures, it computes violations of the molecular clock  across all outgroups c
 
-CV=(1/Nc)sum_c (D(a,c)-D(b,c))/D(a,b) (Pascual-Garcia, Arenas & Bastolla, "The molecular clock in the evolution of protein structures", submitted) and the corresponding t parameter
+CV=(1/Nc)sum_c (D(a,c)-D(b,c))/D(a,b) (Pascual-Garcia, Arenas & Bastolla, "The molecular clock in the evolution of protein structures", submitted)
 
 t=|Mean(D(a,c)-D(b,c))|/S.E.M.(D(a,c)-D(b,c)) (S.E.M.=Standard Error of Mean across the different outgroups c).
 
 Compile:
-
+--------
 >unzip Evol_div.zip
 
 >make -f Evol_div.makefile
@@ -39,17 +42,17 @@ Compile:
 >cp Evol_div ~/bin/ (or whatever path directory you like)
 
 RUN:
-
+-----
 >Evol_div <alignment file>
 EXAMPLE: Evol_div Input_Evol_Div.in
 (you have to modify the names of the pdb files and directory in Input_Cont_Div_50044.aln)
 
 INPUT: 
-
+------
 MSA in FASTA format, indicating names of PDB files
 
 Optional parameters in the MSA file (before the first sequence):
-
+----------------------------------------------------------------
 PDBDIR=<directory of pdb files>  (default: current directory)
 
 PDBEXT=<extension of pdb files>  (default: none)
@@ -60,45 +63,8 @@ PRINT_CV=<0,1>    Print clock violations? (default: 1)
 
 The protein name is the name of a PDB file, optionally followed by the chain index (Ex: >1opd.pdb A or >1opdA or >1opd_A)\n\n");
 
-OUTPUT (for each pair of proteins):
-Program Evol_div
-Author Ugo Bastolla Centro de Biologia Molecular Severo Ochoa
-Email: <ubastolla@cbm.csic.es>
-
-It includes the needlemanwunsch aligner developed by Dr. Andrew C. R. Martin
-in the Profit suite of programs, (c) SciTech Software 1993-2007
-
-Given a multiple sequence alignment (MSA) of proteins with known structures, for all aligned pairs it computes and prints sequence and structure similarity measures:
-(1) Sequence identity SI,
-(2) Contact overlap q,
-(3) TM-score TM (Zhang & Skolnick Proteins 2004 57:702)
-and the corresponding divergence measures:
-(1) Tajima-Nei divergence TN=-log((SI-S0)/(1-S0)) with S0=0.06 (Tajima F & Nei 1984, Mol Biol Evol 1:269),
-(2) Contact_divergence CD=-log((q-q0(L))/(1-q0(L)) (Pascual-Garcia et al Proteins 2010 78:181-96),
-(3) TM_divergence=-log(TM).
-For all pairs and all divergence measures, it computes violations of the molecular clock CV=(1/Nc)sum_c (D(a,c)-D(b,c))/D(a,b) (Pascual-Garcia, Arenas & Bastolla, "The molecular clock in the evolution of protein structures", submitted) and the corresponding t parameter
-t=|Mean(D(a,c)-D(b,c))|/S.E.M.(D(a,c)-D(b,c))
-(S.E.M.=Standard Error of Mean across the different outgroups c).
-
-EXTRACT: unzip Evol_div.zip
-COMPILE: make -f Evol_div.makefile
-MOVE:    cp Evol_div ~/bin/ (or whatever path directory you like)
-RUN:     Evol_div <alignment file>
-EXAMPLE: Evol_div Input_Cont_Div_50044.aln
-(you have to modify the names of the pdb files and directory in
-Input_Cont_Div_50044.aln)
-
-INPUT: 
-MSA in FASTA format, indicating names of PDB files
-Optional parameters in the MSA file (before the first sequence):
-PDBDIR=<directory of pdb files>  (default: current directory)
-PDBEXT=<extension of pdb files>  (default: none)
-PRINT_SIM=<0,1>   Print similarity measures? (default: 0)
-PRINT_CV=<0,1>    Print clock violations? (default: 1)
-The protein name is the name of a PDB file, optionally followed by the chain index (Ex: >1opd.pdb A or >1opdA or >1opd_A)\n\n");
-
-OUTPUT (for each pair of proteins):
--------
+OUTPUT (one line for each pair of proteins):
+-----------------------------------
 File with extension .sim (similarity):
 Sequence identity SI
 Contact overlap q
