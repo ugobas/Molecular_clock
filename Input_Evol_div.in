@@ -1,0 +1,7 @@
+ALI=Input_Cont_Div_50044.aln
+#STR_ALI=
+#PDBDIR=/data/ortizg/databases/pdb/
+#PDBEXT=.pdb
+PDBDIR=/data/ortizg/databases/astral_40/
+PRINT_SIM=0
+PRINT_CV=1;
