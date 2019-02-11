@@ -1,13 +1,11 @@
 # Molecular_clock
-Software related with the paper "The molecular clock in the evolution of protein structures"
+Software related with the paper: "**The molecular clock in the evolution of protein structures**"
 
-Program Evol_div
-Author Ugo Bastolla Centro de Biologia Molecular Severo Ochoa
-Email: <ubastolla@cbm.csic.es>
-
-It includes the needlemanwunsch aligner developed by Dr. Andrew C. R. Martin in the Profit suite of programs, (c) SciTech Software 1993-2007
-
-Given a multiple sequence alignment (MSA) of proteins with known structures, for all aligned pairs it computes and prints sequence and structure similarity measures (.sim), divergence measures (.div) and violations of the molecular clock computed across all possible outgroups (.cv).
+* Program: Evol_div
+* Author: Ugo Bastolla, (Centro de Biologia Molecular Severo Ochoa, CSIC-UAM, Spain)
+* Email: <ubastolla@cbm.csic.es>
+* Short description: Given a multiple sequence alignment (MSA) of proteins with known structures, for all aligned pairs it computes and prints sequence and structure similarity measures (.sim), divergence measures (.div) and violations of the molecular clock computed across all possible outgroups (.cv).
+* License: Please see license file, and note that it includes the needlemanwunsch aligner developed by Dr. Andrew C. R. Martin in the Profit suite of programs, (c) SciTech Software 1993-2007.
 
 Similarity measures:
 --------------------
@@ -19,9 +17,9 @@ Similarity measures:
 
 Divergence measures:
 ---------------------
-(1) Tajima-Nei divergence TN=-log((SI-S0)/(1-S0)) with S0=0.06 (Tajima F & Nei 1984, Mol Biol Evol 1:269),
+(1) Tajima-Nei divergence TN=-log((SI-S0)/(1-S0)) with S0=0.06 (Tajima F & Nei 1984, _Mol Biol Evol_ 1:269),
 
-(2) Contact_divergence CD=-log((q-q0(L))/(1-q0(L)) (Pascual-Garcia et al Proteins 2010 78:181-96),
+(2) Contact_divergence CD=-log((q-q0(L))/(1-q0(L)) (Pascual-Garcia et al _Proteins_ 2010 78:181-96),
 
 (3) TM_divergence=-log(TM).
 
@@ -35,7 +33,7 @@ t=|Mean(D(a,c)-D(b,c))|/S.E.M.(D(a,c)-D(b,c)) (S.E.M.=Standard Error of Mean acr
 
 Compile:
 --------
->unzip Evol_div.zip
+>unzip Evol_div.zip (if you downloaded the whole repository as a zip file)
 
 >make -f Evol_div.makefile
 
@@ -65,23 +63,28 @@ The protein name is the name of a PDB file, optionally followed by the chain ind
 
 OUTPUT (one line for each pair of proteins):
 -----------------------------------
-File with extension .sim (similarity):
-Sequence identity SI
-Contact overlap q
-TM-score TM (structural), Zhang & Skolnick Proteins 2004 57:702
 
--------
-File with extension .div (divergence):
-"Tajima-Nei divergence TN=-log((SI-S0)/(1-S0) S0=0.06 (Tajima F & Nei 1984, Mol Biol Evol 1:269).
-Contact divergence  CD=-log((q-q0(L))/(1-q0(L)) (Pascual-GarcÃ­a et al Proteins 2010 78:181-96)
-TM_divergence=-log(TM)
+For all pairs of proteins, it prints, for each pair: 
 
--------
-File with extension .cv (clock violations):
-For all pairs of proteins, it prints: PDB names, difference of length, number of outgroups;
-For each pair and three types of divergences (Tajima-Nei, Contact divergence, -log(TM)), it prints
-CV=(1/Nc)sum_c (D(a,c)-D(b,c))/D(a,b) (Pascual-Garcia, Arenas & Bastolla, submitted).
-t=|Mean(D(a,c)-D(b,c))|/S.E.M.(D(a,c)-D(b,c))
-n_TI: Number of outgroups for which the triangular inequality is violated, i.e. D(a,c)>D(a,b)+D(b,c) (or same interchanging a with b)
-n_sign: number of outgroups for which the sign of D(a,c)-D(b,c) is different from the sign of the mean.
+1. File with extension .sim (similarity):
+ * Sequence identity SI
+ * Contact overlap q
+ * TM-score TM (structural), Zhang & Skolnick Proteins 2004 57:702
+
+2. File with extension .div (divergence):
+
+* "Tajima-Nei divergence TN=-log((SI-S0)/(1-S0) S0=0.06 (Tajima F & Nei 1984, _Mol Biol Evol_ 1:269).
+* Contact divergence  CD=-log((q-q0(L))/(1-q0(L)) (Pascual-Garci­a et al _Proteins_ 2010 78:181-96)
+* TM_divergence=-log(TM)
+
+3. File with extension .cv (clock violations):
+
+ * PDB names 
+ * difference of length 
+ * number of outgroups;
+ * Three types of divergences: (Tajima-Nei, Contact divergence, -log(TM)).
+ * CV=(1/Nc)sum_c (D(a,c)-D(b,c))/D(a,b) (Pascual-Garcia, Arenas & Bastolla, _submitted_).
+ * t=|Mean(D(a,c)-D(b,c))|/S.E.M.(D(a,c)-D(b,c)) 
+ * n_TI: Number of outgroups for which the triangular inequality is violated, i.e. D(a,c)>D(a,b)+D(b,c) (or same interchanging a with b)
+ * n_sign: number of outgroups for which the sign of D(a,c)-D(b,c) is different from the sign of the mean.
 
