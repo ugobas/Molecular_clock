@@ -1,5 +1,5 @@
 # Molecular_clock
-Software related with the paper: "**The molecular clock in the evolution of protein structures**"
+Software related with the paper: "**The molecular clock in the evolution of protein structures**" Pascual-García, Alberto, Miguel Arenas, and Ugo Bastolla. _Systematic Biology_ (2019). [doi: 10.1093/sysbio/syz022](https://doi.org/10.1093/sysbio/syz022)
 
 * Program: Evol_div
 * Author: Ugo Bastolla, (Centro de Biologia Molecular Severo Ochoa, CSIC-UAM, Spain)
