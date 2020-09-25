@@ -1,15 +1,15 @@
-#include <malloc.h>
+#include <stdlib.h>
 float  **Allocate_mat2_f(int n1, int n2);
 double **Allocate_mat2_d(int n1, int n2);
 
-void Empty_matrix_f(float **matrix, int N){
+void Empty_matrix_f(int N, float **matrix){
   int i;
   if(matrix==NULL)return;
   for(i=0; i<N; i++)free(matrix[i]);
   free(matrix);
 }
 
-void Empty_matrix_d(double **matrix, int N){
+void Empty_matrix_d(int N, double **matrix){
   int i;
   if(matrix==NULL)return;
   for(i=0; i<N; i++)free(matrix[i]);
@@ -17,7 +17,14 @@ void Empty_matrix_d(double **matrix, int N){
 }
 
 
-void Empty_matrix_i(int **matrix, int N){
+void Empty_matrix_i(int N, int **matrix){
+  int i;
+  if(matrix==NULL)return;
+  for(i=0; i<N; i++)free(matrix[i]);
+  free(matrix);
+}
+
+void Empty_matrix_s(int N, short **matrix){
   int i;
   if(matrix==NULL)return;
   for(i=0; i<N; i++)free(matrix[i]);
@@ -34,12 +41,21 @@ float **Allocate_mat2_f(int n1, int n2){
   return(matrix);
 }
 
-
 int ** Allocate_mat2_i(int n1, int n2){
   int i, j;
   int **matrix=malloc(n1*sizeof(int *));
   for(i=0; i<n1; i++){
     matrix[i]=malloc(n2*sizeof(int));
+    for(j=0; j<n2; j++)matrix[i][j]=0;
+  }
+  return(matrix);
+}
+
+short ** Allocate_mat2_s(int n1, int n2){
+  int i, j;
+  short **matrix=malloc(n1*sizeof(short *));
+  for(i=0; i<n1; i++){
+    matrix[i]=malloc(n2*sizeof(short));
     for(j=0; j<n2; j++)matrix[i][j]=0;
   }
   return(matrix);
@@ -54,6 +70,7 @@ double **Allocate_mat2_d(int n1, int n2){
   }
   return(matrix);
 }
+
 
 /*            Fortran             */
 
